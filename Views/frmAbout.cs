@@ -44,11 +44,11 @@ namespace VirtualMouse.Views
         private void FORM_init()
         {
             SwVersion SC = new SwVersion();
-            String s = lblVersione.Text;
+            String s = VERSION_value.Text;
             s += " ";
             s += SC.getVersion();
 
-            lblVersione.Text = s;
+            VERSION_value.Text = s;
         }
 
         #region COMANDI
@@ -57,22 +57,16 @@ namespace VirtualMouse.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lblLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void REPOS_value_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/robbidb/VirtualMouse.git");
         }
 
-        /// <summary>
-        /// Exit Button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btbExit_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         #endregion
-
     }
 }
 
