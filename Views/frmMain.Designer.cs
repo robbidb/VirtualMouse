@@ -34,8 +34,6 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.CLICKREPEAT_value = new System.Windows.Forms.NumericUpDown();
             this.TIMER = new System.Windows.Forms.Timer(this.components);
-            this.btnHelp = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.CLICKOPTIONS_title = new System.Windows.Forms.Label();
             this.CLICKOPTIONS_panel = new System.Windows.Forms.Panel();
             this.CLICKOPTIONS_BUTTON_group = new System.Windows.Forms.GroupBox();
@@ -59,12 +57,21 @@
             this.CLICKINTERVAL_settime_hours_label = new System.Windows.Forms.Label();
             this.CLICKINTERVAL_settime_hours_value = new System.Windows.Forms.TextBox();
             this.CLICKINTERVAL_title = new System.Windows.Forms.Label();
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
+            this.MenuItem_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_help = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_open = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_saveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_Separator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItem_about = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.CLICKREPEAT_value)).BeginInit();
             this.CLICKOPTIONS_panel.SuspendLayout();
             this.CLICKOPTIONS_BUTTON_group.SuspendLayout();
             this.CLICKOPTIONS_TYPE_group.SuspendLayout();
             this.CLICKREPEAT_panel.SuspendLayout();
             this.CLICKINTERVAL_panel.SuspendLayout();
+            this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -131,37 +138,6 @@
             // 
             this.TIMER.Tick += new System.EventHandler(this.TIMER_Tick);
             // 
-            // btnHelp
-            // 
-            this.btnHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHelp.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnHelp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.Black;
-            this.btnHelp.Location = new System.Drawing.Point(8, 333);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(36, 36);
-            this.btnHelp.TabIndex = 15;
-            this.btnHelp.Text = "?";
-            this.btnHelp.UseVisualStyleBackColor = false;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.btnExit.ForeColor = System.Drawing.Color.Black;
-            this.btnExit.Location = new System.Drawing.Point(401, 333);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(80, 36);
-            this.btnExit.TabIndex = 14;
-            this.btnExit.Text = "&Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // CLICKOPTIONS_title
             // 
             this.CLICKOPTIONS_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(252)))));
@@ -182,7 +158,7 @@
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_BUTTON_group);
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_TYPE_group);
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_title);
-            this.CLICKOPTIONS_panel.Location = new System.Drawing.Point(4, 111);
+            this.CLICKOPTIONS_panel.Location = new System.Drawing.Point(4, 130);
             this.CLICKOPTIONS_panel.Name = "CLICKOPTIONS_panel";
             this.CLICKOPTIONS_panel.Size = new System.Drawing.Size(477, 95);
             this.CLICKOPTIONS_panel.TabIndex = 680;
@@ -328,7 +304,7 @@
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_value);
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_rb_repeat);
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_title);
-            this.CLICKREPEAT_panel.Location = new System.Drawing.Point(279, 8);
+            this.CLICKREPEAT_panel.Location = new System.Drawing.Point(279, 30);
             this.CLICKREPEAT_panel.Name = "CLICKREPEAT_panel";
             this.CLICKREPEAT_panel.Size = new System.Drawing.Size(202, 97);
             this.CLICKREPEAT_panel.TabIndex = 681;
@@ -394,7 +370,7 @@
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_hours_label);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_hours_value);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_title);
-            this.CLICKINTERVAL_panel.Location = new System.Drawing.Point(4, 8);
+            this.CLICKINTERVAL_panel.Location = new System.Drawing.Point(4, 30);
             this.CLICKINTERVAL_panel.Name = "CLICKINTERVAL_panel";
             this.CLICKINTERVAL_panel.Size = new System.Drawing.Size(260, 97);
             this.CLICKINTERVAL_panel.TabIndex = 682;
@@ -504,6 +480,69 @@
             this.CLICKINTERVAL_title.Text = "Click Interval";
             this.CLICKINTERVAL_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // MainMenu
+            // 
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_file,
+            this.MenuItem_help});
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(484, 24);
+            this.MainMenu.TabIndex = 683;
+            this.MainMenu.Text = "Mainmenu";
+            // 
+            // MenuItem_file
+            // 
+            this.MenuItem_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_open,
+            this.MenuItem_saveAs,
+            this.MenuItem_Separator1,
+            this.MenuItem_exit});
+            this.MenuItem_file.Name = "MenuItem_file";
+            this.MenuItem_file.Size = new System.Drawing.Size(37, 20);
+            this.MenuItem_file.Text = "File";
+            // 
+            // MenuItem_help
+            // 
+            this.MenuItem_help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_about});
+            this.MenuItem_help.Name = "MenuItem_help";
+            this.MenuItem_help.Size = new System.Drawing.Size(44, 20);
+            this.MenuItem_help.Text = "Help";
+            // 
+            // MenuItem_open
+            // 
+            this.MenuItem_open.Name = "MenuItem_open";
+            this.MenuItem_open.Size = new System.Drawing.Size(180, 22);
+            this.MenuItem_open.Text = "Open";
+            this.MenuItem_open.Click += new System.EventHandler(this.MenuItem_open_Click);
+            // 
+            // MenuItem_saveAs
+            // 
+            this.MenuItem_saveAs.Name = "MenuItem_saveAs";
+            this.MenuItem_saveAs.Size = new System.Drawing.Size(180, 22);
+            this.MenuItem_saveAs.Text = "Save as...";
+            this.MenuItem_saveAs.Click += new System.EventHandler(this.MenuItem_saveAs_Click);
+            // 
+            // MenuItem_exit
+            // 
+            this.MenuItem_exit.Name = "MenuItem_exit";
+            this.MenuItem_exit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItem_exit.Text = "Exit";
+            this.MenuItem_exit.Click += new System.EventHandler(this.MenuItem_exit_Click);
+            // 
+            // MenuItem_Separator1
+            // 
+            this.MenuItem_Separator1.Name = "MenuItem_Separator1";
+            this.MenuItem_Separator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // MenuItem_about
+            // 
+            this.MenuItem_about.Name = "MenuItem_about";
+            this.MenuItem_about.Size = new System.Drawing.Size(180, 22);
+            this.MenuItem_about.Text = "About";
+            this.MenuItem_about.Click += new System.EventHandler(this.MenuItem_about_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,10 +552,9 @@
             this.Controls.Add(this.CLICKINTERVAL_panel);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.CLICKREPEAT_panel);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.CLICKOPTIONS_panel);
+            this.Controls.Add(this.MainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(400, 300);
@@ -531,7 +569,10 @@
             this.CLICKREPEAT_panel.ResumeLayout(false);
             this.CLICKINTERVAL_panel.ResumeLayout(false);
             this.CLICKINTERVAL_panel.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -540,8 +581,6 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.NumericUpDown CLICKREPEAT_value;
         private System.Windows.Forms.Timer TIMER;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Label CLICKOPTIONS_title;
         private System.Windows.Forms.Panel CLICKOPTIONS_panel;
         private System.Windows.Forms.GroupBox CLICKOPTIONS_BUTTON_group;
@@ -565,6 +604,14 @@
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_mins_value;
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_secs_value;
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_millis_value;
+        private System.Windows.Forms.MenuStrip MainMenu;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_file;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_open;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_saveAs;
+        private System.Windows.Forms.ToolStripSeparator MenuItem_Separator1;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_exit;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_help;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_about;
     }
 }
 

@@ -73,10 +73,7 @@ namespace VirtualMouse.Views
         private void FORM_end()
         {
             // Configuration Data
-            if (File.Exists(APP_configFile))
-            {
-                _md.XMLSerialize(APP_configFile, _md);
-            }
+            _md.XMLSerialize(APP_configFile, _md);
         }
         #endregion
 
@@ -185,6 +182,68 @@ namespace VirtualMouse.Views
         }
 
 
+        #region MENU
+        private void MenuItem_open_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog _Dialog = new OpenFileDialog
+            {
+                InitialDirectory = APP_path,
+                Title = "Browse Configuration Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "xml",
+                Filter = "xml files (*.xml)|*.xml",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (_Dialog.ShowDialog() == DialogResult.OK)
+            {
+                String sNomeFile = _Dialog.FileName;
+
+                _md = _md.XMLDSerialize(sNomeFile);
+                CONTROLS_set();
+            }
+        }
+
+        private void MenuItem_saveAs_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog _Dialog = new SaveFileDialog
+            {
+                InitialDirectory = APP_path,
+                Title = "Save Configuration File",
+                CheckPathExists = true,
+                DefaultExt = "xml",
+                Filter = "XML files (*.xml)|*.xnl|All files (*.*)|*.*",
+                FilterIndex = 2,
+                RestoreDirectory = true
+            };
+            if (_Dialog.ShowDialog() == DialogResult.OK)
+            {
+                String sNomeFile = _Dialog.FileName;
+
+                // Configuration Data
+                _md.XMLSerialize(sNomeFile, _md);
+            }
+        }
+
+        private void MenuItem_exit_Click(object sender, EventArgs e)
+        {
+            FORM_end();
+            Close();
+        }
+
+        private void MenuItem_about_Click(object sender, EventArgs e)
+        {
+            new frmAbout().ShowDialog();
+        }
+        #endregion
+
         #region COMMANDS
         private void CMD_start()
         {
@@ -212,17 +271,6 @@ namespace VirtualMouse.Views
         private void btnStop_Click(object sender, EventArgs e)
         {
             CMD_stop();
-        }
-
-        private void btnHelp_Click(object sender, EventArgs e)
-        {
-            new frmAbout().ShowDialog();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            FORM_end();
-            Close();
         }
 
         private void Click_sx()
@@ -263,7 +311,6 @@ namespace VirtualMouse.Views
             }
         }
         #endregion
-
 
         #region SETTINGS
         // Click Repeat
@@ -339,7 +386,6 @@ namespace VirtualMouse.Views
             return bOK;
         }
         #endregion
-
 
         #region TIMER
         /// <summary>
