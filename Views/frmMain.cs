@@ -2,7 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Threading;
+using System.IO;
+
 using VirtualMouse.Utility;
 
 namespace VirtualMouse.Views
@@ -21,9 +22,13 @@ namespace VirtualMouse.Views
         public static extern void mouse_event(long dwFlags, long dx, long dy, long cButtons, long dwExtraInfo);
         #endregion
 
+        String APP_nomeExe = string.Empty;
+        String APP_path = string.Empty;
+        String APP_configFile = string.Empty;
 
-        private Data _d = new Data();
-      
+        private MouseData _md = new MouseData();
+
+        #region FORM
         /// <summary>
         /// Costruttore
         /// </summary>
@@ -34,15 +39,46 @@ namespace VirtualMouse.Views
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            FORM_init();
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            base.OnClosing(e);
+        }
+
+        private void FORM_init()
+        {
             SwVersion i = new SwVersion();                          // Application Info
             this.Text = i.getName() + " " + i.getVersion();         // Window Title
 
-            CONTROLS_reset();
-            BUTTONS_enable(true, false);
-
             // Enable keyboard event
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(KeyEvent);
+
+            APP_nomeExe = Path.GetFileNameWithoutExtension(Application.ExecutablePath);
+            APP_path    = Path.GetDirectoryName(Application.ExecutablePath);
+            APP_configFile = APP_path + "\\" + APP_nomeExe + ".xml";
+
+            // Configuration Data
+            _md = _md.XMLDSerialize(APP_configFile);
+            if (_md == null)
+            {
+                MessageBox.Show("[ERROR] file :  [" + APP_configFile + "] not found ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            CONTROLS_set();
+            BUTTONS_enable(true, false);
+
         }
+
+        private void FORM_end()
+        {
+            // Configuration Data
+            if (File.Exists(APP_configFile))
+            {
+                _md.XMLSerialize(APP_configFile, _md);
+            }
+        }
+        #endregion
 
         /// <summary>
         /// Keyup Event
@@ -63,21 +99,50 @@ namespace VirtualMouse.Views
             {
 
             }
-                //MessageBox.Show("No Function");
+        }
+
+        private void CONTROLS_set()
+        {
+            // Click Interval
+            CLICKINTERVAL_settime_hours_value.Text  = _md.INTERVAL_hours.ToString();
+            CLICKINTERVAL_settime_mins_value.Text   = _md.INTERVAL_mins.ToString();
+            CLICKINTERVAL_settime_secs_value.Text   = _md.INTERVAL_secs.ToString();
+            CLICKINTERVAL_settime_millis_value.Text = _md.INTERVAL_millis.ToString();
+
+            // Click Repeat
+            CLICKREPEAT_value.Value = _md.REPEAT_value;
+
+            CLICKREPEAT_rb_repeat.Checked   = !_md.REPEAT_infinity;
+            CLICKREPEAT_rb_nolimits.Checked = _md.REPEAT_infinity;
+
+            // Click Options
+            CLICKOPTIONS_BUTTON_left.Checked = false;
+            CLICKOPTIONS_BUTTON_middle.Checked = false;
+            CLICKOPTIONS_BUTTON_right.Checked = false;
+            switch (_md.TYPE_value)
+            {
+                case 0:
+                    CLICKOPTIONS_BUTTON_left.Checked = true;
+                    break;
+                case 1:
+                    CLICKOPTIONS_BUTTON_middle.Checked = true;
+                    break;
+                case 2:
+                    CLICKOPTIONS_BUTTON_right.Checked = true;
+                    break;
+            }
+
+            CLICKOPTIONS_TYPE_single.Checked = !_md.TYPE_doubleclick;
+            CLICKOPTIONS_TYPE_double.Checked = _md.TYPE_doubleclick;
         }
 
         private void CONTROLS_reset()
         {
             // Click Interval
-            CLICKINTERVAL_settime.Checked = true;
-            CLICKINTERVAL_random.Checked = false;
-
             CLICKINTERVAL_settime_hours_value.Text = "0";
             CLICKINTERVAL_settime_mins_value.Text = "0";
             CLICKINTERVAL_settime_secs_value.Text = "1";
             CLICKINTERVAL_settime_millis_value.Text = "0";
-            CLICKINTERVAL_random_minValue.Text = "0.1";
-            CLICKINTERVAL_random_maxValue.Text = "60";
 
             // Click Repeat
             CLICKREPEAT_value.Value = 10;
@@ -119,7 +184,6 @@ namespace VirtualMouse.Views
             }
         }
 
- 
 
         #region COMMANDS
         private void CMD_start()
@@ -128,8 +192,8 @@ namespace VirtualMouse.Views
             {
                 BUTTONS_enable(false, true);
 
-                _d.REPEAT_cnt = _d.REPEAT_value;
-                TIMER_start(_d.INTERVAL_value);
+                _md.REPEAT_cnt = _md.REPEAT_value;
+                TIMER_start(_md.INTERVAL_value);
             }
         }
 
@@ -157,33 +221,22 @@ namespace VirtualMouse.Views
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            FORM_end();
+            Close();
         }
 
-        #region MOUSE Commands
-        /// <summary>
-        /// Left mouse button
-        /// </summary>
         private void Click_sx()
         {
             int X = Cursor.Position.X;
             int Y = Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
         }
-
-        /// <summary>
-        /// Middle mouse button
-        /// </summary>
         private void Click_middle()
         {
             int X = Cursor.Position.X;
             int Y = Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_MIDDLEDOWN | MOUSEEVENTF_MIDDLEUP, X, Y, 0, 0);
         }
-
-        /// <summary>
-        /// Right mouse button
-        /// </summary>
         private void Click_dx()
         {
             //Call the imported function with the cursor's current position
@@ -191,104 +244,84 @@ namespace VirtualMouse.Views
             int Y = Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, X, Y, 0, 0);
         }
-
         private void Click_run(int _type)
         {
             switch (_type)
             {
                 case 0:
-                    if (_d.TYPE_doubleclick) { Click_sx(); }
+                    if (_md.TYPE_doubleclick) { Click_sx(); }
                     Click_sx();
                     break;
                 case 1:
-                    if (_d.TYPE_doubleclick) { Click_middle(); }
+                    if (_md.TYPE_doubleclick) { Click_middle(); }
                     Click_middle();
                     break;
                 case 2:
-                    if (_d.TYPE_doubleclick) { Click_dx(); }
+                    if (_md.TYPE_doubleclick) { Click_dx(); }
                     Click_dx();
                     break;
             }
         }
         #endregion
-        #endregion
 
 
         #region SETTINGS
-        #region Click Repeat
+        // Click Repeat
         private void CLICKREPEAT_value_ValueChanged(object sender, EventArgs e)
         {
+            _md.REPEAT_value = Convert.ToInt32(CLICKREPEAT_value.Value);
         }
-
         private void CLICKREPEAT_rb_CheckedChanged(object sender, EventArgs e)
         {
+            _md.REPEAT_infinity = CLICKREPEAT_rb_nolimits.Checked;
             CLICKREPEAT_value.Enabled = !CLICKREPEAT_rb_nolimits.Checked;
         }
-        #endregion
 
-        #region Click Interval
-        private void CLICKINTERVAL_set_CheckedChanged(object sender, EventArgs e)
+        // Click Interval
+        private void CLICKINTERVAL_settime_hours_TextChanged(object sender, EventArgs e)
         {
-            if (CLICKINTERVAL_settime.Checked)
-            {
-                _d.INTERVAL_type = _d.INTERVAL_TYPE_FIXED;
-
-                CLICKINTERVAL_settime_hours_value.Enabled = true;
-                CLICKINTERVAL_settime_mins_value.Enabled = true;
-                CLICKINTERVAL_settime_secs_value.Enabled = true;
-                CLICKINTERVAL_settime_millis_value.Enabled = true;
-
-                CLICKINTERVAL_random_minValue.Enabled = false;
-                CLICKINTERVAL_random_maxValue.Enabled = false;
-            }
-            else
-            {
-                _d.INTERVAL_type = _d.INTERVAL_TYPE_RANDOM;
-
-                CLICKINTERVAL_settime_hours_value.Enabled = false;
-                CLICKINTERVAL_settime_mins_value.Enabled = false;
-                CLICKINTERVAL_settime_secs_value.Enabled = false;
-                CLICKINTERVAL_settime_millis_value.Enabled = false;
-
-                CLICKINTERVAL_random_minValue.Enabled = true;
-                CLICKINTERVAL_random_maxValue.Enabled = true;
-            }
+            _md.INTERVAL_hours = Convert.ToInt32(CLICKINTERVAL_settime_hours_value.Text);
         }
-        private void CLICKINTERVAL_settime_value_TextChanged(object sender, EventArgs e)
+        private void CLICKINTERVAL_settime_mins_TextChanged(object sender, EventArgs e)
         {
-
+            _md.INTERVAL_mins = Convert.ToInt32(CLICKINTERVAL_settime_mins_value.Text);
         }
-        #endregion
+        private void CLICKINTERVAL_settime_secs_TextChanged(object sender, EventArgs e)
+        {
+            _md.INTERVAL_secs = Convert.ToInt32(CLICKINTERVAL_settime_secs_value.Text);
+        }
+        private void CLICKINTERVAL_settime_millis_TextChanged(object sender, EventArgs e)
+        {
+            _md.INTERVAL_millis = Convert.ToInt32(CLICKINTERVAL_settime_millis_value.Text);
+        }
 
-        #region Click Options
+        // Click Options
         private void CLICKOPTIONS_BUTTON_CheckedChanged(object sender, EventArgs e)
         {
             if (CLICKOPTIONS_BUTTON_left.Checked)
             {
-                _d.TYPE_value = 0;
+                _md.TYPE_value = 0;
             }
             if (CLICKOPTIONS_BUTTON_middle.Checked)
             {
-                _d.TYPE_value = 1;
+                _md.TYPE_value = 1;
             }
             if (CLICKOPTIONS_BUTTON_right.Checked)
             {
-                _d.TYPE_value = 2;
+                _md.TYPE_value = 2;
             }
         }
-
         private void CLICKOPTIONS_TYPE_CheckedChanged(object sender, EventArgs e)
         {
             if (CLICKOPTIONS_TYPE_double.Checked)
             {
-                _d.TYPE_doubleclick = true;
+                _md.TYPE_doubleclick = true;
             }
             else
             {
-                _d.TYPE_doubleclick = false;
+                _md.TYPE_doubleclick = false;
             }
         }
-        #endregion
 
         private Boolean DATA_check()
         {
@@ -300,21 +333,7 @@ namespace VirtualMouse.Views
             iTmp += Convert.ToInt32(CLICKINTERVAL_settime_secs_value.Text) * 1000;
             iTmp += Convert.ToInt32(CLICKINTERVAL_settime_mins_value.Text) * 60000;
             iTmp += Convert.ToInt32(CLICKINTERVAL_settime_hours_value.Text) * 3600000;
-            _d.INTERVAL_value = iTmp;
-            #endregion
-
-            #region Click Repeat
-            iTmp = Convert.ToInt32(CLICKREPEAT_value.Value);
-            if (iTmp < 1)
-            {
-                MessageBox.Show("Click quantity must be > 0 !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                bOK = false;
-            }
-            else
-            {
-                _d.REPEAT_value = iTmp;
-                _d.REPEAT_infinity = CLICKREPEAT_rb_nolimits.Checked;
-            }
+            _md.INTERVAL_value = iTmp;
             #endregion
 
             return bOK;
@@ -350,31 +369,30 @@ namespace VirtualMouse.Views
         {
             Boolean bContinue = false;
 
-            if (_d.REPEAT_infinity)
+            if (_md.REPEAT_infinity)
             {
                 bContinue = true;
-                Click_run(_d.TYPE_value);
+                Click_run(_md.TYPE_value);
             }
             else
             {
-                if (_d.REPEAT_cnt != 0)
+                if (_md.REPEAT_cnt != 0)
                 {
                     bContinue = true;
 
-                    _d.REPEAT_cnt--;
+                    _md.REPEAT_cnt--;
                 }
             }
 
             if (bContinue)
             {
-                Click_run(_d.TYPE_value);
+                Click_run(_md.TYPE_value);
             }
             else
             {
                 CMD_stop();
             }
         }
-
         #endregion
     }
 }

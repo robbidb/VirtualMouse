@@ -50,11 +50,6 @@
             this.CLICKREPEAT_rb_repeat = new System.Windows.Forms.RadioButton();
             this.CLICKREPEAT_title = new System.Windows.Forms.Label();
             this.CLICKINTERVAL_panel = new System.Windows.Forms.Panel();
-            this.CLICKINTERVAL_random_separator = new System.Windows.Forms.Label();
-            this.CLICKINTERVAL_random_maxValue = new System.Windows.Forms.TextBox();
-            this.CLICKINTERVAL_random_maxValue_label = new System.Windows.Forms.Label();
-            this.CLICKINTERVAL_random_minValue = new System.Windows.Forms.TextBox();
-            this.CLICKINTERVAL_random_minValue_label = new System.Windows.Forms.Label();
             this.CLICKINTERVAL_settime_mins_value = new System.Windows.Forms.TextBox();
             this.CLICKINTERVAL_settime_secs_value = new System.Windows.Forms.TextBox();
             this.CLICKINTERVAL_settime_millis_value = new System.Windows.Forms.TextBox();
@@ -63,8 +58,6 @@
             this.CLICKINTERVAL_settime_mins_label = new System.Windows.Forms.Label();
             this.CLICKINTERVAL_settime_hours_label = new System.Windows.Forms.Label();
             this.CLICKINTERVAL_settime_hours_value = new System.Windows.Forms.TextBox();
-            this.CLICKINTERVAL_random = new System.Windows.Forms.RadioButton();
-            this.CLICKINTERVAL_settime = new System.Windows.Forms.RadioButton();
             this.CLICKINTERVAL_title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CLICKREPEAT_value)).BeginInit();
             this.CLICKOPTIONS_panel.SuspendLayout();
@@ -112,7 +105,7 @@
             this.CLICKREPEAT_value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CLICKREPEAT_value.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKREPEAT_value.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CLICKREPEAT_value.Location = new System.Drawing.Point(49, 58);
+            this.CLICKREPEAT_value.Location = new System.Drawing.Point(99, 32);
             this.CLICKREPEAT_value.Margin = new System.Windows.Forms.Padding(0);
             this.CLICKREPEAT_value.Maximum = new decimal(new int[] {
             99999999,
@@ -178,7 +171,7 @@
             this.CLICKOPTIONS_title.Location = new System.Drawing.Point(0, 0);
             this.CLICKOPTIONS_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CLICKOPTIONS_title.Name = "CLICKOPTIONS_title";
-            this.CLICKOPTIONS_title.Size = new System.Drawing.Size(258, 24);
+            this.CLICKOPTIONS_title.Size = new System.Drawing.Size(475, 24);
             this.CLICKOPTIONS_title.TabIndex = 679;
             this.CLICKOPTIONS_title.Text = "Click Options";
             this.CLICKOPTIONS_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,9 +182,9 @@
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_BUTTON_group);
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_TYPE_group);
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_title);
-            this.CLICKOPTIONS_panel.Location = new System.Drawing.Point(4, 145);
+            this.CLICKOPTIONS_panel.Location = new System.Drawing.Point(4, 111);
             this.CLICKOPTIONS_panel.Name = "CLICKOPTIONS_panel";
-            this.CLICKOPTIONS_panel.Size = new System.Drawing.Size(260, 153);
+            this.CLICKOPTIONS_panel.Size = new System.Drawing.Size(477, 95);
             this.CLICKOPTIONS_panel.TabIndex = 680;
             // 
             // CLICKOPTIONS_BUTTON_group
@@ -278,9 +271,9 @@
             this.CLICKOPTIONS_TYPE_group.Controls.Add(this.CLICKOPTIONS_TYPE_single);
             this.CLICKOPTIONS_TYPE_group.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CLICKOPTIONS_TYPE_group.Font = new System.Drawing.Font("Calibri", 11.25F);
-            this.CLICKOPTIONS_TYPE_group.Location = new System.Drawing.Point(9, 88);
+            this.CLICKOPTIONS_TYPE_group.Location = new System.Drawing.Point(284, 27);
             this.CLICKOPTIONS_TYPE_group.Name = "CLICKOPTIONS_TYPE_group";
-            this.CLICKOPTIONS_TYPE_group.Size = new System.Drawing.Size(240, 55);
+            this.CLICKOPTIONS_TYPE_group.Size = new System.Drawing.Size(161, 55);
             this.CLICKOPTIONS_TYPE_group.TabIndex = 680;
             this.CLICKOPTIONS_TYPE_group.TabStop = false;
             this.CLICKOPTIONS_TYPE_group.Text = "Click Type";
@@ -296,7 +289,7 @@
             this.CLICKOPTIONS_TYPE_double.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CLICKOPTIONS_TYPE_double.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
             this.CLICKOPTIONS_TYPE_double.ForeColor = System.Drawing.Color.White;
-            this.CLICKOPTIONS_TYPE_double.Location = new System.Drawing.Point(130, 20);
+            this.CLICKOPTIONS_TYPE_double.Location = new System.Drawing.Point(85, 20);
             this.CLICKOPTIONS_TYPE_double.Name = "CLICKOPTIONS_TYPE_double";
             this.CLICKOPTIONS_TYPE_double.Size = new System.Drawing.Size(70, 28);
             this.CLICKOPTIONS_TYPE_double.TabIndex = 1;
@@ -317,7 +310,7 @@
             this.CLICKOPTIONS_TYPE_single.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CLICKOPTIONS_TYPE_single.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CLICKOPTIONS_TYPE_single.ForeColor = System.Drawing.Color.White;
-            this.CLICKOPTIONS_TYPE_single.Location = new System.Drawing.Point(40, 20);
+            this.CLICKOPTIONS_TYPE_single.Location = new System.Drawing.Point(5, 20);
             this.CLICKOPTIONS_TYPE_single.Margin = new System.Windows.Forms.Padding(0);
             this.CLICKOPTIONS_TYPE_single.Name = "CLICKOPTIONS_TYPE_single";
             this.CLICKOPTIONS_TYPE_single.Size = new System.Drawing.Size(70, 28);
@@ -335,9 +328,9 @@
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_value);
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_rb_repeat);
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_title);
-            this.CLICKREPEAT_panel.Location = new System.Drawing.Point(278, 145);
+            this.CLICKREPEAT_panel.Location = new System.Drawing.Point(279, 8);
             this.CLICKREPEAT_panel.Name = "CLICKREPEAT_panel";
-            this.CLICKREPEAT_panel.Size = new System.Drawing.Size(202, 153);
+            this.CLICKREPEAT_panel.Size = new System.Drawing.Size(202, 97);
             this.CLICKREPEAT_panel.TabIndex = 681;
             // 
             // CLICKREPEAT_rb_nolimits
@@ -348,7 +341,7 @@
             this.CLICKREPEAT_rb_nolimits.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CLICKREPEAT_rb_nolimits.Font = new System.Drawing.Font("Calibri", 11.25F);
             this.CLICKREPEAT_rb_nolimits.ForeColor = System.Drawing.Color.Black;
-            this.CLICKREPEAT_rb_nolimits.Location = new System.Drawing.Point(9, 107);
+            this.CLICKREPEAT_rb_nolimits.Location = new System.Drawing.Point(9, 61);
             this.CLICKREPEAT_rb_nolimits.Name = "CLICKREPEAT_rb_nolimits";
             this.CLICKREPEAT_rb_nolimits.Size = new System.Drawing.Size(90, 28);
             this.CLICKREPEAT_rb_nolimits.TabIndex = 1;
@@ -392,11 +385,6 @@
             // CLICKINTERVAL_panel
             // 
             this.CLICKINTERVAL_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_random_separator);
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_random_maxValue);
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_random_maxValue_label);
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_random_minValue);
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_random_minValue_label);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_mins_value);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_secs_value);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_millis_value);
@@ -405,110 +393,54 @@
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_mins_label);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_hours_label);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime_hours_value);
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_random);
-            this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_settime);
             this.CLICKINTERVAL_panel.Controls.Add(this.CLICKINTERVAL_title);
             this.CLICKINTERVAL_panel.Location = new System.Drawing.Point(4, 8);
             this.CLICKINTERVAL_panel.Name = "CLICKINTERVAL_panel";
-            this.CLICKINTERVAL_panel.Size = new System.Drawing.Size(476, 126);
+            this.CLICKINTERVAL_panel.Size = new System.Drawing.Size(260, 97);
             this.CLICKINTERVAL_panel.TabIndex = 682;
-            // 
-            // CLICKINTERVAL_random_separator
-            // 
-            this.CLICKINTERVAL_random_separator.AutoSize = true;
-            this.CLICKINTERVAL_random_separator.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_random_separator.Location = new System.Drawing.Point(352, 64);
-            this.CLICKINTERVAL_random_separator.Name = "CLICKINTERVAL_random_separator";
-            this.CLICKINTERVAL_random_separator.Size = new System.Drawing.Size(14, 19);
-            this.CLICKINTERVAL_random_separator.TabIndex = 692;
-            this.CLICKINTERVAL_random_separator.Text = "-";
-            // 
-            // CLICKINTERVAL_random_maxValue
-            // 
-            this.CLICKINTERVAL_random_maxValue.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CLICKINTERVAL_random_maxValue.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_random_maxValue.Location = new System.Drawing.Point(372, 61);
-            this.CLICKINTERVAL_random_maxValue.Name = "CLICKINTERVAL_random_maxValue";
-            this.CLICKINTERVAL_random_maxValue.Size = new System.Drawing.Size(50, 27);
-            this.CLICKINTERVAL_random_maxValue.TabIndex = 691;
-            this.CLICKINTERVAL_random_maxValue.Text = "60";
-            this.CLICKINTERVAL_random_maxValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // CLICKINTERVAL_random_maxValue_label
-            // 
-            this.CLICKINTERVAL_random_maxValue_label.AutoSize = true;
-            this.CLICKINTERVAL_random_maxValue_label.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CLICKINTERVAL_random_maxValue_label.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_random_maxValue_label.Location = new System.Drawing.Point(376, 91);
-            this.CLICKINTERVAL_random_maxValue_label.Name = "CLICKINTERVAL_random_maxValue_label";
-            this.CLICKINTERVAL_random_maxValue_label.Size = new System.Drawing.Size(42, 19);
-            this.CLICKINTERVAL_random_maxValue_label.TabIndex = 690;
-            this.CLICKINTERVAL_random_maxValue_label.Text = "Secs.";
-            // 
-            // CLICKINTERVAL_random_minValue
-            // 
-            this.CLICKINTERVAL_random_minValue.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CLICKINTERVAL_random_minValue.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_random_minValue.Location = new System.Drawing.Point(296, 61);
-            this.CLICKINTERVAL_random_minValue.Name = "CLICKINTERVAL_random_minValue";
-            this.CLICKINTERVAL_random_minValue.Size = new System.Drawing.Size(50, 27);
-            this.CLICKINTERVAL_random_minValue.TabIndex = 689;
-            this.CLICKINTERVAL_random_minValue.Text = "0.1";
-            this.CLICKINTERVAL_random_minValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // CLICKINTERVAL_random_minValue_label
-            // 
-            this.CLICKINTERVAL_random_minValue_label.AutoSize = true;
-            this.CLICKINTERVAL_random_minValue_label.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CLICKINTERVAL_random_minValue_label.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_random_minValue_label.Location = new System.Drawing.Point(300, 91);
-            this.CLICKINTERVAL_random_minValue_label.Name = "CLICKINTERVAL_random_minValue_label";
-            this.CLICKINTERVAL_random_minValue_label.Size = new System.Drawing.Size(42, 19);
-            this.CLICKINTERVAL_random_minValue_label.TabIndex = 688;
-            this.CLICKINTERVAL_random_minValue_label.Text = "Secs.";
             // 
             // CLICKINTERVAL_settime_mins_value
             // 
             this.CLICKINTERVAL_settime_mins_value.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_mins_value.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_mins_value.Location = new System.Drawing.Point(83, 61);
+            this.CLICKINTERVAL_settime_mins_value.Location = new System.Drawing.Point(74, 27);
             this.CLICKINTERVAL_settime_mins_value.MaxLength = 60;
             this.CLICKINTERVAL_settime_mins_value.Name = "CLICKINTERVAL_settime_mins_value";
             this.CLICKINTERVAL_settime_mins_value.Size = new System.Drawing.Size(50, 27);
             this.CLICKINTERVAL_settime_mins_value.TabIndex = 687;
             this.CLICKINTERVAL_settime_mins_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CLICKINTERVAL_settime_mins_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_value_TextChanged);
+            this.CLICKINTERVAL_settime_mins_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_mins_TextChanged);
             // 
             // CLICKINTERVAL_settime_secs_value
             // 
             this.CLICKINTERVAL_settime_secs_value.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_secs_value.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_secs_value.Location = new System.Drawing.Point(143, 61);
+            this.CLICKINTERVAL_settime_secs_value.Location = new System.Drawing.Point(134, 27);
             this.CLICKINTERVAL_settime_secs_value.MaxLength = 60;
             this.CLICKINTERVAL_settime_secs_value.Name = "CLICKINTERVAL_settime_secs_value";
             this.CLICKINTERVAL_settime_secs_value.Size = new System.Drawing.Size(50, 27);
             this.CLICKINTERVAL_settime_secs_value.TabIndex = 686;
             this.CLICKINTERVAL_settime_secs_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CLICKINTERVAL_settime_secs_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_value_TextChanged);
+            this.CLICKINTERVAL_settime_secs_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_secs_TextChanged);
             // 
             // CLICKINTERVAL_settime_millis_value
             // 
             this.CLICKINTERVAL_settime_millis_value.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_millis_value.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_millis_value.Location = new System.Drawing.Point(203, 61);
+            this.CLICKINTERVAL_settime_millis_value.Location = new System.Drawing.Point(194, 27);
             this.CLICKINTERVAL_settime_millis_value.MaxLength = 1000;
             this.CLICKINTERVAL_settime_millis_value.Name = "CLICKINTERVAL_settime_millis_value";
             this.CLICKINTERVAL_settime_millis_value.Size = new System.Drawing.Size(50, 27);
             this.CLICKINTERVAL_settime_millis_value.TabIndex = 685;
             this.CLICKINTERVAL_settime_millis_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CLICKINTERVAL_settime_millis_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_value_TextChanged);
+            this.CLICKINTERVAL_settime_millis_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_millis_TextChanged);
             // 
             // CLICKINTERVAL_settime_millis_label
             // 
             this.CLICKINTERVAL_settime_millis_label.AutoSize = true;
             this.CLICKINTERVAL_settime_millis_label.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_millis_label.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_millis_label.Location = new System.Drawing.Point(204, 91);
+            this.CLICKINTERVAL_settime_millis_label.Location = new System.Drawing.Point(195, 57);
             this.CLICKINTERVAL_settime_millis_label.Name = "CLICKINTERVAL_settime_millis_label";
             this.CLICKINTERVAL_settime_millis_label.Size = new System.Drawing.Size(49, 19);
             this.CLICKINTERVAL_settime_millis_label.TabIndex = 684;
@@ -519,7 +451,7 @@
             this.CLICKINTERVAL_settime_secs_label.AutoSize = true;
             this.CLICKINTERVAL_settime_secs_label.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_secs_label.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_secs_label.Location = new System.Drawing.Point(147, 91);
+            this.CLICKINTERVAL_settime_secs_label.Location = new System.Drawing.Point(138, 57);
             this.CLICKINTERVAL_settime_secs_label.Name = "CLICKINTERVAL_settime_secs_label";
             this.CLICKINTERVAL_settime_secs_label.Size = new System.Drawing.Size(42, 19);
             this.CLICKINTERVAL_settime_secs_label.TabIndex = 683;
@@ -530,7 +462,7 @@
             this.CLICKINTERVAL_settime_mins_label.AutoSize = true;
             this.CLICKINTERVAL_settime_mins_label.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_mins_label.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_mins_label.Location = new System.Drawing.Point(84, 91);
+            this.CLICKINTERVAL_settime_mins_label.Location = new System.Drawing.Point(75, 57);
             this.CLICKINTERVAL_settime_mins_label.Name = "CLICKINTERVAL_settime_mins_label";
             this.CLICKINTERVAL_settime_mins_label.Size = new System.Drawing.Size(45, 19);
             this.CLICKINTERVAL_settime_mins_label.TabIndex = 682;
@@ -541,7 +473,7 @@
             this.CLICKINTERVAL_settime_hours_label.AutoSize = true;
             this.CLICKINTERVAL_settime_hours_label.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_hours_label.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_hours_label.Location = new System.Drawing.Point(25, 91);
+            this.CLICKINTERVAL_settime_hours_label.Location = new System.Drawing.Point(16, 57);
             this.CLICKINTERVAL_settime_hours_label.Name = "CLICKINTERVAL_settime_hours_label";
             this.CLICKINTERVAL_settime_hours_label.Size = new System.Drawing.Size(47, 19);
             this.CLICKINTERVAL_settime_hours_label.TabIndex = 681;
@@ -551,47 +483,12 @@
             // 
             this.CLICKINTERVAL_settime_hours_value.Cursor = System.Windows.Forms.Cursors.Default;
             this.CLICKINTERVAL_settime_hours_value.Font = new System.Drawing.Font("Calibri", 12F);
-            this.CLICKINTERVAL_settime_hours_value.Location = new System.Drawing.Point(23, 61);
+            this.CLICKINTERVAL_settime_hours_value.Location = new System.Drawing.Point(14, 27);
             this.CLICKINTERVAL_settime_hours_value.Name = "CLICKINTERVAL_settime_hours_value";
             this.CLICKINTERVAL_settime_hours_value.Size = new System.Drawing.Size(50, 27);
             this.CLICKINTERVAL_settime_hours_value.TabIndex = 680;
             this.CLICKINTERVAL_settime_hours_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CLICKINTERVAL_settime_hours_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_value_TextChanged);
-            // 
-            // CLICKINTERVAL_random
-            // 
-            this.CLICKINTERVAL_random.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.CLICKINTERVAL_random.FlatAppearance.BorderSize = 0;
-            this.CLICKINTERVAL_random.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(252)))));
-            this.CLICKINTERVAL_random.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CLICKINTERVAL_random.Font = new System.Drawing.Font("Calibri", 11.25F);
-            this.CLICKINTERVAL_random.ForeColor = System.Drawing.Color.Black;
-            this.CLICKINTERVAL_random.Location = new System.Drawing.Point(285, 30);
-            this.CLICKINTERVAL_random.Name = "CLICKINTERVAL_random";
-            this.CLICKINTERVAL_random.Size = new System.Drawing.Size(140, 28);
-            this.CLICKINTERVAL_random.TabIndex = 1;
-            this.CLICKINTERVAL_random.TabStop = true;
-            this.CLICKINTERVAL_random.Text = "Random Interval";
-            this.CLICKINTERVAL_random.UseVisualStyleBackColor = false;
-            this.CLICKINTERVAL_random.CheckedChanged += new System.EventHandler(this.CLICKINTERVAL_set_CheckedChanged);
-            // 
-            // CLICKINTERVAL_settime
-            // 
-            this.CLICKINTERVAL_settime.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.CLICKINTERVAL_settime.FlatAppearance.BorderSize = 0;
-            this.CLICKINTERVAL_settime.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(252)))));
-            this.CLICKINTERVAL_settime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CLICKINTERVAL_settime.Font = new System.Drawing.Font("Calibri", 11.25F);
-            this.CLICKINTERVAL_settime.ForeColor = System.Drawing.Color.Black;
-            this.CLICKINTERVAL_settime.Location = new System.Drawing.Point(9, 30);
-            this.CLICKINTERVAL_settime.Margin = new System.Windows.Forms.Padding(0);
-            this.CLICKINTERVAL_settime.Name = "CLICKINTERVAL_settime";
-            this.CLICKINTERVAL_settime.Size = new System.Drawing.Size(140, 28);
-            this.CLICKINTERVAL_settime.TabIndex = 0;
-            this.CLICKINTERVAL_settime.TabStop = true;
-            this.CLICKINTERVAL_settime.Text = "Set time";
-            this.CLICKINTERVAL_settime.UseVisualStyleBackColor = false;
-            this.CLICKINTERVAL_settime.CheckedChanged += new System.EventHandler(this.CLICKINTERVAL_set_CheckedChanged);
+            this.CLICKINTERVAL_settime_hours_value.TextChanged += new System.EventHandler(this.CLICKINTERVAL_settime_hours_TextChanged);
             // 
             // CLICKINTERVAL_title
             // 
@@ -602,7 +499,7 @@
             this.CLICKINTERVAL_title.Location = new System.Drawing.Point(0, 0);
             this.CLICKINTERVAL_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CLICKINTERVAL_title.Name = "CLICKINTERVAL_title";
-            this.CLICKINTERVAL_title.Size = new System.Drawing.Size(474, 24);
+            this.CLICKINTERVAL_title.Size = new System.Drawing.Size(258, 24);
             this.CLICKINTERVAL_title.TabIndex = 679;
             this.CLICKINTERVAL_title.Text = "Click Interval";
             this.CLICKINTERVAL_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -625,6 +522,7 @@
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "frmMain";
             this.Text = "VirtualMouse";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CLICKREPEAT_value)).EndInit();
             this.CLICKOPTIONS_panel.ResumeLayout(false);
@@ -658,19 +556,12 @@
         private System.Windows.Forms.RadioButton CLICKREPEAT_rb_repeat;
         private System.Windows.Forms.Label CLICKREPEAT_title;
         private System.Windows.Forms.Panel CLICKINTERVAL_panel;
-        private System.Windows.Forms.RadioButton CLICKINTERVAL_random;
-        private System.Windows.Forms.RadioButton CLICKINTERVAL_settime;
         private System.Windows.Forms.Label CLICKINTERVAL_title;
         private System.Windows.Forms.Label CLICKINTERVAL_settime_millis_label;
         private System.Windows.Forms.Label CLICKINTERVAL_settime_secs_label;
         private System.Windows.Forms.Label CLICKINTERVAL_settime_mins_label;
         private System.Windows.Forms.Label CLICKINTERVAL_settime_hours_label;
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_hours_value;
-        private System.Windows.Forms.Label CLICKINTERVAL_random_separator;
-        private System.Windows.Forms.TextBox CLICKINTERVAL_random_maxValue;
-        private System.Windows.Forms.Label CLICKINTERVAL_random_maxValue_label;
-        private System.Windows.Forms.TextBox CLICKINTERVAL_random_minValue;
-        private System.Windows.Forms.Label CLICKINTERVAL_random_minValue_label;
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_mins_value;
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_secs_value;
         private System.Windows.Forms.TextBox CLICKINTERVAL_settime_millis_value;
