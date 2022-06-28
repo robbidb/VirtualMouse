@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
@@ -28,6 +29,9 @@ namespace VirtualMouse.Views
 
         private MouseData _md = new MouseData();
 
+        public int LISTPOSITIONS_count = 0;                 // listview items number
+        public int LISTPOSITIONS_current = 0;               // Current item from listview
+
         #region FORM
         /// <summary>
         /// Costruttore
@@ -44,6 +48,7 @@ namespace VirtualMouse.Views
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            FORM_end();
             base.OnClosing(e);
         }
 
@@ -56,7 +61,7 @@ namespace VirtualMouse.Views
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(KeyEvent);
 
             APP_nomeExe = Path.GetFileNameWithoutExtension(Application.ExecutablePath);
-            APP_path    = Path.GetDirectoryName(Application.ExecutablePath);
+            APP_path = Path.GetDirectoryName(Application.ExecutablePath);
             APP_configFile = APP_path + "\\" + APP_nomeExe + ".xml";
 
             // Configuration Data
@@ -66,8 +71,7 @@ namespace VirtualMouse.Views
                 MessageBox.Show("[ERROR] file :  [" + APP_configFile + "] not found ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             CONTROLS_set();
-            BUTTONS_enable(true, false);
-
+            CMD_StartStop_enable(true, false);
         }
 
         private void FORM_end()
@@ -75,7 +79,6 @@ namespace VirtualMouse.Views
             // Configuration Data
             _md.XMLSerialize(APP_configFile, _md);
         }
-        #endregion
 
         /// <summary>
         /// Keyup Event
@@ -88,98 +91,20 @@ namespace VirtualMouse.Views
             {
                 CMD_start();
             }
-            if (e.KeyCode == Keys.F8)
+            else if (e.KeyCode == Keys.F8)
             {
                 CMD_stop();
             }
-            else
+            else if (e.KeyCode == Keys.F2)
             {
-
-            }
-        }
-
-        private void CONTROLS_set()
-        {
-            // Click Interval
-            CLICKINTERVAL_settime_hours_value.Text  = _md.INTERVAL_hours.ToString();
-            CLICKINTERVAL_settime_mins_value.Text   = _md.INTERVAL_mins.ToString();
-            CLICKINTERVAL_settime_secs_value.Text   = _md.INTERVAL_secs.ToString();
-            CLICKINTERVAL_settime_millis_value.Text = _md.INTERVAL_millis.ToString();
-
-            // Click Repeat
-            CLICKREPEAT_value.Value = _md.REPEAT_value;
-
-            CLICKREPEAT_rb_repeat.Checked   = !_md.REPEAT_infinity;
-            CLICKREPEAT_rb_nolimits.Checked = _md.REPEAT_infinity;
-
-            // Click Options
-            CLICKOPTIONS_BUTTON_left.Checked = false;
-            CLICKOPTIONS_BUTTON_middle.Checked = false;
-            CLICKOPTIONS_BUTTON_right.Checked = false;
-            switch (_md.TYPE_value)
-            {
-                case 0:
-                    CLICKOPTIONS_BUTTON_left.Checked = true;
-                    break;
-                case 1:
-                    CLICKOPTIONS_BUTTON_middle.Checked = true;
-                    break;
-                case 2:
-                    CLICKOPTIONS_BUTTON_right.Checked = true;
-                    break;
-            }
-
-            CLICKOPTIONS_TYPE_single.Checked = !_md.TYPE_doubleclick;
-            CLICKOPTIONS_TYPE_double.Checked = _md.TYPE_doubleclick;
-        }
-
-        private void CONTROLS_reset()
-        {
-            // Click Interval
-            CLICKINTERVAL_settime_hours_value.Text = "0";
-            CLICKINTERVAL_settime_mins_value.Text = "0";
-            CLICKINTERVAL_settime_secs_value.Text = "1";
-            CLICKINTERVAL_settime_millis_value.Text = "0";
-
-            // Click Repeat
-            CLICKREPEAT_value.Value = 10;
-            CLICKREPEAT_rb_repeat.Checked = true;
-            CLICKREPEAT_rb_nolimits.Checked = false;
-
-            // Click Options
-            CLICKOPTIONS_BUTTON_left.Checked = true;
-            CLICKOPTIONS_BUTTON_middle.Checked = false;
-            CLICKOPTIONS_BUTTON_right.Checked = false;
-            CLICKOPTIONS_TYPE_single.Checked = true;
-            CLICKOPTIONS_TYPE_double.Checked = false;
-        }
-
-        private void BUTTONS_enable(Boolean _start, Boolean _stop)
-        {
-            btnStart.Enabled = _start;
-            if (_start)
-            {
-                btnStart.Visible = true;
-                btnStart.BackColor = Color.Green;
+                btnAddPosition_Click(null, null);
             }
             else
             {
-                btnStart.Visible = false;
-                btnStart.BackColor = Color.DimGray;
-            }
 
-            btnStop.Enabled = _stop;
-            if (_stop)
-            {
-                btnStop.Visible = true;
-                btnStop.BackColor = Color.Red;
-            }
-            else
-            {
-                btnStop.Visible = false;
-                btnStop.BackColor = Color.DimGray;
             }
         }
+        #endregion
 
 
         #region MENU
@@ -244,12 +169,79 @@ namespace VirtualMouse.Views
         }
         #endregion
 
+
         #region COMMANDS
+        private void CONTROLS_set()
+        {
+            // Click Interval
+            CLICKINTERVAL_settime_hours_value.Text = _md.INTERVAL_hours.ToString();
+            CLICKINTERVAL_settime_mins_value.Text = _md.INTERVAL_mins.ToString();
+            CLICKINTERVAL_settime_secs_value.Text = _md.INTERVAL_secs.ToString();
+            CLICKINTERVAL_settime_millis_value.Text = _md.INTERVAL_millis.ToString();
+
+            // Click Repeat
+            CLICKREPEAT_value.Value = _md.REPEAT_value;
+
+            CLICKREPEAT_rb_repeat.Checked = !_md.REPEAT_infinity;
+            CLICKREPEAT_rb_nolimits.Checked = _md.REPEAT_infinity;
+
+            // Click Options
+            CLICKOPTIONS_BUTTON_left.Checked = false;
+            CLICKOPTIONS_BUTTON_middle.Checked = false;
+            CLICKOPTIONS_BUTTON_right.Checked = false;
+            switch (_md.TYPE_value)
+            {
+                case 0:
+                    CLICKOPTIONS_BUTTON_left.Checked = true;
+                    break;
+                case 1:
+                    CLICKOPTIONS_BUTTON_middle.Checked = true;
+                    break;
+                case 2:
+                    CLICKOPTIONS_BUTTON_right.Checked = true;
+                    break;
+            }
+
+            CLICKOPTIONS_TYPE_single.Checked = !_md.TYPE_doubleclick;
+            CLICKOPTIONS_TYPE_double.Checked = _md.TYPE_doubleclick;
+
+            POSITIONS_current.Checked = !_md.POSITIONS_isQueued;
+            POSITIONS_queued.Checked = _md.POSITIONS_isQueued;
+            POSITIONS_ListView.Items.Clear();
+
+            foreach (Point p in _md.PointList)
+            {
+                ListViewItem item = new ListViewItem((POSITIONS_ListView.Items.Count + 1).ToString());
+
+                item.SubItems.Add(p.X.ToString());
+                item.SubItems.Add(p.Y.ToString());
+
+                POSITIONS_ListView.Items.Add(item);
+            }
+        }
+
         private void CMD_start()
         {
             if (DATA_check())
             {
-                BUTTONS_enable(false, true);
+                CMD_StartStop_enable(false, true);
+
+                if ( _md.POSITIONS_isQueued)
+                {
+                    LISTPOSITIONS_count   = POSITIONS_ListView.Items.Count-1;
+                    LISTPOSITIONS_current = 0;
+                    if (LISTPOSITIONS_count > 0)
+                    {
+                        _md.PointList.Clear();
+                        foreach (ListViewItem item in POSITIONS_ListView.Items)
+                        {
+                            int x = Convert.ToInt32(item.SubItems[1].Text); //x coordinate
+                            int y = Convert.ToInt32(item.SubItems[2].Text); //y coordinate
+                            Point p = new Point(x, y);
+                            _md.PointList.Add(p);
+                        }
+                    }
+                }
 
                 _md.REPEAT_cnt = _md.REPEAT_value;
                 TIMER_start(_md.INTERVAL_value);
@@ -258,9 +250,34 @@ namespace VirtualMouse.Views
 
         private void CMD_stop()
         {
-            BUTTONS_enable(true, false);
+            CMD_StartStop_enable(true, false);
 
             TIMER_stop();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_start"></param>
+        /// <param name="_stop"></param>
+        private void CMD_StartStop_enable(Boolean _start, Boolean _stop)
+        {
+            bool _visible;
+            Color _backColor;
+
+            if (_start) { _backColor = Color.Green; }
+            else { _backColor = Color.DimGray; }
+            _visible = _start;
+            btnStart.Invoke((EventHandler)delegate { btnStart.Enabled = _start; });
+            btnStart.Invoke((EventHandler)delegate { btnStart.Visible = _visible; });
+            btnStart.Invoke((EventHandler)delegate { btnStart.BackColor = _backColor; });
+
+            if (_stop) { _backColor = Color.Red; }
+            else { _backColor = Color.DimGray; }
+            _visible = _stop;
+            btnStop.Invoke((EventHandler)delegate { btnStop.Enabled = _stop; });
+            btnStop.Invoke((EventHandler)delegate { btnStop.Visible = _visible; });
+            btnStop.Invoke((EventHandler)delegate { btnStop.BackColor = _backColor; });
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -273,44 +290,48 @@ namespace VirtualMouse.Views
             CMD_stop();
         }
 
-        private void Click_sx()
+        private void Click_run(int _x, int _y, int _type)
         {
-            int X = Cursor.Position.X;
-            int Y = Cursor.Position.Y;
-            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
-        }
-        private void Click_middle()
-        {
-            int X = Cursor.Position.X;
-            int Y = Cursor.Position.Y;
-            mouse_event(MOUSEEVENTF_MIDDLEDOWN | MOUSEEVENTF_MIDDLEUP, X, Y, 0, 0);
-        }
-        private void Click_dx()
-        {
-            //Call the imported function with the cursor's current position
-            int X = Cursor.Position.X;
-            int Y = Cursor.Position.Y;
-            mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, X, Y, 0, 0);
-        }
-        private void Click_run(int _type)
-        {
+            int Up = 0;
+            int Down = 0;
+
             switch (_type)
             {
                 case 0:
-                    if (_md.TYPE_doubleclick) { Click_sx(); }
-                    Click_sx();
+                    // Left
+                    Up   = MOUSEEVENTF_LEFTUP;
+                    Down = MOUSEEVENTF_LEFTDOWN;
                     break;
+
                 case 1:
-                    if (_md.TYPE_doubleclick) { Click_middle(); }
-                    Click_middle();
+                    // Middle
+                    Up   = MOUSEEVENTF_MIDDLEUP;
+                    Down = MOUSEEVENTF_MIDDLEDOWN;
                     break;
+
                 case 2:
-                    if (_md.TYPE_doubleclick) { Click_dx(); }
-                    Click_dx();
+                    Up   = MOUSEEVENTF_RIGHTUP;
+                    Down = MOUSEEVENTF_RIGHTDOWN;
                     break;
             }
+
+            if (_md.TYPE_doubleclick)
+            {
+                mouse_event(Down | Up, _x, _y, 0, 0);
+            }
+            mouse_event(Down | Up, _x, _y, 0, 0);
+        }
+
+        /// <summary>
+        /// Set the current position of the cursor to the coordinates held in point
+        /// </summary>
+        /// <param name="point">Coordinates to set the cursor to</param>
+        private void SetCursorPosition(Point point)
+        {
+            Cursor.Position = point;
         }
         #endregion
+
 
         #region SETTINGS
         // Click Repeat
@@ -385,9 +406,52 @@ namespace VirtualMouse.Views
 
             return bOK;
         }
+
+        // Queued positions
+        private void POSITIONS_current_CheckedChanged(object sender, EventArgs e)
+        {
+            _md.POSITIONS_isQueued = POSITIONS_queued.Checked;
+        }
+
+        private void POSITIONS_readFromCursor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (POSITIONS_readFromCursor.Checked)
+            {
+                TIMER_currentPosition.Start();
+            }
+            else
+            {
+                TIMER_currentPosition.Stop();
+            }
+        }
+
+        private void btnAddPosition_Click(object sender, EventArgs e)
+        {
+            if (POSITION_IsValid(POSITIONS_x.Text, POSITIONS_y.Text))
+            {
+
+                ListViewItem item = new ListViewItem((POSITIONS_ListView.Items.Count + 1).ToString());
+
+                item.SubItems.Add(POSITIONS_x.Text);
+                item.SubItems.Add(POSITIONS_y.Text);
+
+                POSITIONS_ListView.Items.Add(item);
+            }
+        }
+
+        private void btnClearListPositions_Click(object sender, EventArgs e)
+        {
+            POSITIONS_ListView.Items.Clear();
+        }
+
+        private bool POSITION_IsValid(string _x, string _y)
+        {
+            return true;
+        }
         #endregion
 
-        #region TIMER
+
+        #region TIMERS
         /// <summary>
         /// Run timer
         /// </summary>
@@ -406,11 +470,6 @@ namespace VirtualMouse.Views
             TIMER.Dispose();
         }
 
-        private void TIMER_pause()
-        {
-            TIMER.Stop();
-        }
-
         private void TIMER_Tick(object sender, EventArgs e)
         {
             Boolean bContinue = false;
@@ -418,26 +477,52 @@ namespace VirtualMouse.Views
             if (_md.REPEAT_infinity)
             {
                 bContinue = true;
-                Click_run(_md.TYPE_value);
             }
             else
             {
                 if (_md.REPEAT_cnt != 0)
                 {
                     bContinue = true;
-
                     _md.REPEAT_cnt--;
                 }
             }
 
             if (bContinue)
             {
-                Click_run(_md.TYPE_value);
+                if (_md.POSITIONS_isQueued)
+                {
+                    if (LISTPOSITIONS_count > 0)
+                    {
+                        // Move pointer
+                        SetCursorPosition(_md.PointList[LISTPOSITIONS_current]);
+                        
+
+                        LISTPOSITIONS_current ++;
+                        if (LISTPOSITIONS_current > LISTPOSITIONS_count)
+                        {
+                            LISTPOSITIONS_current = 0;
+                        }
+                    }
+                    else
+                    {
+                    }
+                }
+                Click_run(Cursor.Position.X, Cursor.Position.Y, _md.TYPE_value);
             }
             else
             {
                 CMD_stop();
             }
+        }
+
+
+        /// <summary>
+        /// Read the current position of the mouse cursor on screen on each interval of the timer
+        /// </summary>
+        private void TIMER_currentPosition_Tick(object sender, EventArgs e)
+        {
+            POSITIONS_x.Invoke((EventHandler)delegate { POSITIONS_x.Text = Cursor.Position.X.ToString(); });
+            POSITIONS_y.Invoke((EventHandler)delegate { POSITIONS_y.Text = Cursor.Position.Y.ToString(); });
         }
         #endregion
     }

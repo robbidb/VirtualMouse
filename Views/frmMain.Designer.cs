@@ -59,12 +59,28 @@
             this.CLICKINTERVAL_title = new System.Windows.Forms.Label();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.MenuItem_file = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_help = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_open = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_saveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_exit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Separator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItem_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_help = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddPosition = new System.Windows.Forms.Button();
+            this.POSITIONS_ListView = new System.Windows.Forms.ListView();
+            this.Index = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.XCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.YCoord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.POSITIONS_y = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.POSITIONS_x = new System.Windows.Forms.TextBox();
+            this.POSITIONS_readFromCursor = new System.Windows.Forms.CheckBox();
+            this.POSITIONS_panel = new System.Windows.Forms.Panel();
+            this.POSITIONS_queued = new System.Windows.Forms.RadioButton();
+            this.POSITIONS_current = new System.Windows.Forms.RadioButton();
+            this.POSITIONS_title = new System.Windows.Forms.Label();
+            this.TIMER_currentPosition = new System.Windows.Forms.Timer(this.components);
+            this.btnClearListPositions = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CLICKREPEAT_value)).BeginInit();
             this.CLICKOPTIONS_panel.SuspendLayout();
             this.CLICKOPTIONS_BUTTON_group.SuspendLayout();
@@ -72,6 +88,7 @@
             this.CLICKREPEAT_panel.SuspendLayout();
             this.CLICKINTERVAL_panel.SuspendLayout();
             this.MainMenu.SuspendLayout();
+            this.POSITIONS_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -80,7 +97,7 @@
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(170, 333);
+            this.btnStart.Location = new System.Drawing.Point(46, 403);
             this.btnStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(80, 36);
@@ -97,7 +114,7 @@
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnStop.ForeColor = System.Drawing.Color.White;
-            this.btnStop.Location = new System.Drawing.Point(250, 333);
+            this.btnStop.Location = new System.Drawing.Point(126, 403);
             this.btnStop.Margin = new System.Windows.Forms.Padding(2);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(80, 36);
@@ -147,7 +164,7 @@
             this.CLICKOPTIONS_title.Location = new System.Drawing.Point(0, 0);
             this.CLICKOPTIONS_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CLICKOPTIONS_title.Name = "CLICKOPTIONS_title";
-            this.CLICKOPTIONS_title.Size = new System.Drawing.Size(475, 24);
+            this.CLICKOPTIONS_title.Size = new System.Drawing.Size(258, 24);
             this.CLICKOPTIONS_title.TabIndex = 679;
             this.CLICKOPTIONS_title.Text = "Click Options";
             this.CLICKOPTIONS_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,9 +175,9 @@
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_BUTTON_group);
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_TYPE_group);
             this.CLICKOPTIONS_panel.Controls.Add(this.CLICKOPTIONS_title);
-            this.CLICKOPTIONS_panel.Location = new System.Drawing.Point(4, 130);
+            this.CLICKOPTIONS_panel.Location = new System.Drawing.Point(4, 132);
             this.CLICKOPTIONS_panel.Name = "CLICKOPTIONS_panel";
-            this.CLICKOPTIONS_panel.Size = new System.Drawing.Size(477, 95);
+            this.CLICKOPTIONS_panel.Size = new System.Drawing.Size(260, 155);
             this.CLICKOPTIONS_panel.TabIndex = 680;
             // 
             // CLICKOPTIONS_BUTTON_group
@@ -247,7 +264,7 @@
             this.CLICKOPTIONS_TYPE_group.Controls.Add(this.CLICKOPTIONS_TYPE_single);
             this.CLICKOPTIONS_TYPE_group.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CLICKOPTIONS_TYPE_group.Font = new System.Drawing.Font("Calibri", 11.25F);
-            this.CLICKOPTIONS_TYPE_group.Location = new System.Drawing.Point(284, 27);
+            this.CLICKOPTIONS_TYPE_group.Location = new System.Drawing.Point(9, 88);
             this.CLICKOPTIONS_TYPE_group.Name = "CLICKOPTIONS_TYPE_group";
             this.CLICKOPTIONS_TYPE_group.Size = new System.Drawing.Size(161, 55);
             this.CLICKOPTIONS_TYPE_group.TabIndex = 680;
@@ -304,9 +321,9 @@
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_value);
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_rb_repeat);
             this.CLICKREPEAT_panel.Controls.Add(this.CLICKREPEAT_title);
-            this.CLICKREPEAT_panel.Location = new System.Drawing.Point(279, 30);
+            this.CLICKREPEAT_panel.Location = new System.Drawing.Point(4, 292);
             this.CLICKREPEAT_panel.Name = "CLICKREPEAT_panel";
-            this.CLICKREPEAT_panel.Size = new System.Drawing.Size(202, 97);
+            this.CLICKREPEAT_panel.Size = new System.Drawing.Size(260, 97);
             this.CLICKREPEAT_panel.TabIndex = 681;
             // 
             // CLICKREPEAT_rb_nolimits
@@ -353,7 +370,7 @@
             this.CLICKREPEAT_title.Location = new System.Drawing.Point(0, 0);
             this.CLICKREPEAT_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CLICKREPEAT_title.Name = "CLICKREPEAT_title";
-            this.CLICKREPEAT_title.Size = new System.Drawing.Size(200, 24);
+            this.CLICKREPEAT_title.Size = new System.Drawing.Size(258, 24);
             this.CLICKREPEAT_title.TabIndex = 679;
             this.CLICKREPEAT_title.Text = "Click Repeat";
             this.CLICKREPEAT_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -487,7 +504,7 @@
             this.MenuItem_help});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(484, 24);
+            this.MainMenu.Size = new System.Drawing.Size(620, 24);
             this.MainMenu.TabIndex = 683;
             this.MainMenu.Text = "Mainmenu";
             // 
@@ -502,6 +519,32 @@
             this.MenuItem_file.Size = new System.Drawing.Size(37, 20);
             this.MenuItem_file.Text = "File";
             // 
+            // MenuItem_open
+            // 
+            this.MenuItem_open.Name = "MenuItem_open";
+            this.MenuItem_open.Size = new System.Drawing.Size(121, 22);
+            this.MenuItem_open.Text = "Open";
+            this.MenuItem_open.Click += new System.EventHandler(this.MenuItem_open_Click);
+            // 
+            // MenuItem_saveAs
+            // 
+            this.MenuItem_saveAs.Name = "MenuItem_saveAs";
+            this.MenuItem_saveAs.Size = new System.Drawing.Size(121, 22);
+            this.MenuItem_saveAs.Text = "Save as...";
+            this.MenuItem_saveAs.Click += new System.EventHandler(this.MenuItem_saveAs_Click);
+            // 
+            // MenuItem_Separator1
+            // 
+            this.MenuItem_Separator1.Name = "MenuItem_Separator1";
+            this.MenuItem_Separator1.Size = new System.Drawing.Size(118, 6);
+            // 
+            // MenuItem_exit
+            // 
+            this.MenuItem_exit.Name = "MenuItem_exit";
+            this.MenuItem_exit.Size = new System.Drawing.Size(121, 22);
+            this.MenuItem_exit.Text = "Exit";
+            this.MenuItem_exit.Click += new System.EventHandler(this.MenuItem_exit_Click);
+            // 
             // MenuItem_help
             // 
             this.MenuItem_help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -510,45 +553,207 @@
             this.MenuItem_help.Size = new System.Drawing.Size(44, 20);
             this.MenuItem_help.Text = "Help";
             // 
-            // MenuItem_open
-            // 
-            this.MenuItem_open.Name = "MenuItem_open";
-            this.MenuItem_open.Size = new System.Drawing.Size(180, 22);
-            this.MenuItem_open.Text = "Open";
-            this.MenuItem_open.Click += new System.EventHandler(this.MenuItem_open_Click);
-            // 
-            // MenuItem_saveAs
-            // 
-            this.MenuItem_saveAs.Name = "MenuItem_saveAs";
-            this.MenuItem_saveAs.Size = new System.Drawing.Size(180, 22);
-            this.MenuItem_saveAs.Text = "Save as...";
-            this.MenuItem_saveAs.Click += new System.EventHandler(this.MenuItem_saveAs_Click);
-            // 
-            // MenuItem_exit
-            // 
-            this.MenuItem_exit.Name = "MenuItem_exit";
-            this.MenuItem_exit.Size = new System.Drawing.Size(180, 22);
-            this.MenuItem_exit.Text = "Exit";
-            this.MenuItem_exit.Click += new System.EventHandler(this.MenuItem_exit_Click);
-            // 
-            // MenuItem_Separator1
-            // 
-            this.MenuItem_Separator1.Name = "MenuItem_Separator1";
-            this.MenuItem_Separator1.Size = new System.Drawing.Size(177, 6);
-            // 
             // MenuItem_about
             // 
             this.MenuItem_about.Name = "MenuItem_about";
-            this.MenuItem_about.Size = new System.Drawing.Size(180, 22);
+            this.MenuItem_about.Size = new System.Drawing.Size(107, 22);
             this.MenuItem_about.Text = "About";
             this.MenuItem_about.Click += new System.EventHandler(this.MenuItem_about_Click);
+            // 
+            // btnAddPosition
+            // 
+            this.btnAddPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAddPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPosition.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnAddPosition.ForeColor = System.Drawing.Color.White;
+            this.btnAddPosition.Location = new System.Drawing.Point(214, 181);
+            this.btnAddPosition.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddPosition.Name = "btnAddPosition";
+            this.btnAddPosition.Size = new System.Drawing.Size(80, 36);
+            this.btnAddPosition.TabIndex = 685;
+            this.btnAddPosition.Text = "Add";
+            this.btnAddPosition.UseVisualStyleBackColor = false;
+            this.btnAddPosition.Click += new System.EventHandler(this.btnAddPosition_Click);
+            // 
+            // POSITIONS_ListView
+            // 
+            this.POSITIONS_ListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Index,
+            this.XCoord,
+            this.YCoord});
+            this.POSITIONS_ListView.FullRowSelect = true;
+            this.POSITIONS_ListView.GridLines = true;
+            this.POSITIONS_ListView.HideSelection = false;
+            this.POSITIONS_ListView.Location = new System.Drawing.Point(27, 95);
+            this.POSITIONS_ListView.Name = "POSITIONS_ListView";
+            this.POSITIONS_ListView.Size = new System.Drawing.Size(168, 191);
+            this.POSITIONS_ListView.TabIndex = 688;
+            this.POSITIONS_ListView.UseCompatibleStateImageBehavior = false;
+            this.POSITIONS_ListView.View = System.Windows.Forms.View.Details;
+            // 
+            // Index
+            // 
+            this.Index.Text = "Cnt";
+            // 
+            // XCoord
+            // 
+            this.XCoord.Text = "X";
+            this.XCoord.Width = 74;
+            // 
+            // YCoord
+            // 
+            this.YCoord.Text = "Y";
+            this.YCoord.Width = 75;
+            // 
+            // POSITIONS_y
+            // 
+            this.POSITIONS_y.Cursor = System.Windows.Forms.Cursors.Default;
+            this.POSITIONS_y.Font = new System.Drawing.Font("Calibri", 12F);
+            this.POSITIONS_y.Location = new System.Drawing.Point(261, 149);
+            this.POSITIONS_y.MaxLength = 60;
+            this.POSITIONS_y.Name = "POSITIONS_y";
+            this.POSITIONS_y.Size = new System.Drawing.Size(50, 27);
+            this.POSITIONS_y.TabIndex = 692;
+            this.POSITIONS_y.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F);
+            this.label2.Location = new System.Drawing.Point(277, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 19);
+            this.label2.TabIndex = 691;
+            this.label2.Text = "Y";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F);
+            this.label3.Location = new System.Drawing.Point(219, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 19);
+            this.label3.TabIndex = 690;
+            this.label3.Text = "X";
+            // 
+            // POSITIONS_x
+            // 
+            this.POSITIONS_x.Cursor = System.Windows.Forms.Cursors.Default;
+            this.POSITIONS_x.Font = new System.Drawing.Font("Calibri", 12F);
+            this.POSITIONS_x.Location = new System.Drawing.Point(201, 149);
+            this.POSITIONS_x.Name = "POSITIONS_x";
+            this.POSITIONS_x.Size = new System.Drawing.Size(50, 27);
+            this.POSITIONS_x.TabIndex = 689;
+            this.POSITIONS_x.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // POSITIONS_readFromCursor
+            // 
+            this.POSITIONS_readFromCursor.AutoSize = true;
+            this.POSITIONS_readFromCursor.Font = new System.Drawing.Font("Calibri", 12F);
+            this.POSITIONS_readFromCursor.Location = new System.Drawing.Point(201, 95);
+            this.POSITIONS_readFromCursor.Name = "POSITIONS_readFromCursor";
+            this.POSITIONS_readFromCursor.Size = new System.Drawing.Size(139, 23);
+            this.POSITIONS_readFromCursor.TabIndex = 693;
+            this.POSITIONS_readFromCursor.Text = "Read from cursor";
+            this.POSITIONS_readFromCursor.UseVisualStyleBackColor = true;
+            this.POSITIONS_readFromCursor.CheckedChanged += new System.EventHandler(this.POSITIONS_readFromCursor_CheckedChanged);
+            // 
+            // POSITIONS_panel
+            // 
+            this.POSITIONS_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.POSITIONS_panel.Controls.Add(this.btnClearListPositions);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_queued);
+            this.POSITIONS_panel.Controls.Add(this.btnAddPosition);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_readFromCursor);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_current);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_y);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_title);
+            this.POSITIONS_panel.Controls.Add(this.label2);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_ListView);
+            this.POSITIONS_panel.Controls.Add(this.label3);
+            this.POSITIONS_panel.Controls.Add(this.POSITIONS_x);
+            this.POSITIONS_panel.Location = new System.Drawing.Point(270, 30);
+            this.POSITIONS_panel.Name = "POSITIONS_panel";
+            this.POSITIONS_panel.Size = new System.Drawing.Size(342, 359);
+            this.POSITIONS_panel.TabIndex = 682;
+            // 
+            // POSITIONS_queued
+            // 
+            this.POSITIONS_queued.Cursor = System.Windows.Forms.Cursors.Default;
+            this.POSITIONS_queued.FlatAppearance.BorderSize = 0;
+            this.POSITIONS_queued.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(252)))));
+            this.POSITIONS_queued.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.POSITIONS_queued.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.POSITIONS_queued.ForeColor = System.Drawing.Color.Black;
+            this.POSITIONS_queued.Location = new System.Drawing.Point(9, 61);
+            this.POSITIONS_queued.Name = "POSITIONS_queued";
+            this.POSITIONS_queued.Size = new System.Drawing.Size(186, 28);
+            this.POSITIONS_queued.TabIndex = 1;
+            this.POSITIONS_queued.TabStop = true;
+            this.POSITIONS_queued.Text = "Queued Cursor Positions";
+            this.POSITIONS_queued.UseVisualStyleBackColor = false;
+            this.POSITIONS_queued.CheckedChanged += new System.EventHandler(this.POSITIONS_current_CheckedChanged);
+            // 
+            // POSITIONS_current
+            // 
+            this.POSITIONS_current.Cursor = System.Windows.Forms.Cursors.Default;
+            this.POSITIONS_current.FlatAppearance.BorderSize = 0;
+            this.POSITIONS_current.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(252)))));
+            this.POSITIONS_current.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.POSITIONS_current.Font = new System.Drawing.Font("Calibri", 11.25F);
+            this.POSITIONS_current.ForeColor = System.Drawing.Color.Black;
+            this.POSITIONS_current.Location = new System.Drawing.Point(9, 30);
+            this.POSITIONS_current.Margin = new System.Windows.Forms.Padding(0);
+            this.POSITIONS_current.Name = "POSITIONS_current";
+            this.POSITIONS_current.Size = new System.Drawing.Size(186, 28);
+            this.POSITIONS_current.TabIndex = 0;
+            this.POSITIONS_current.TabStop = true;
+            this.POSITIONS_current.Text = "Current Cursor Position";
+            this.POSITIONS_current.UseVisualStyleBackColor = false;
+            this.POSITIONS_current.CheckedChanged += new System.EventHandler(this.POSITIONS_current_CheckedChanged);
+            // 
+            // POSITIONS_title
+            // 
+            this.POSITIONS_title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(95)))), ((int)(((byte)(252)))));
+            this.POSITIONS_title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.POSITIONS_title.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.POSITIONS_title.ForeColor = System.Drawing.Color.White;
+            this.POSITIONS_title.Location = new System.Drawing.Point(0, 0);
+            this.POSITIONS_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.POSITIONS_title.Name = "POSITIONS_title";
+            this.POSITIONS_title.Size = new System.Drawing.Size(340, 24);
+            this.POSITIONS_title.TabIndex = 679;
+            this.POSITIONS_title.Text = "Current/Queued Positions";
+            this.POSITIONS_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TIMER_currentPosition
+            // 
+            this.TIMER_currentPosition.Tick += new System.EventHandler(this.TIMER_currentPosition_Tick);
+            // 
+            // btnClearListPositions
+            // 
+            this.btnClearListPositions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnClearListPositions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearListPositions.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnClearListPositions.ForeColor = System.Drawing.Color.White;
+            this.btnClearListPositions.Location = new System.Drawing.Point(214, 250);
+            this.btnClearListPositions.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClearListPositions.Name = "btnClearListPositions";
+            this.btnClearListPositions.Size = new System.Drawing.Size(80, 36);
+            this.btnClearListPositions.TabIndex = 694;
+            this.btnClearListPositions.Text = "Empty";
+            this.btnClearListPositions.UseVisualStyleBackColor = false;
+            this.btnClearListPositions.Click += new System.EventHandler(this.btnClearListPositions_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(484, 377);
+            this.ClientSize = new System.Drawing.Size(620, 451);
+            this.Controls.Add(this.POSITIONS_panel);
             this.Controls.Add(this.CLICKINTERVAL_panel);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -571,6 +776,8 @@
             this.CLICKINTERVAL_panel.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
+            this.POSITIONS_panel.ResumeLayout(false);
+            this.POSITIONS_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -612,6 +819,22 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_exit;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_help;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_about;
+        private System.Windows.Forms.Button btnAddPosition;
+        private System.Windows.Forms.ListView POSITIONS_ListView;
+        private System.Windows.Forms.ColumnHeader XCoord;
+        private System.Windows.Forms.ColumnHeader YCoord;
+        private System.Windows.Forms.TextBox POSITIONS_y;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox POSITIONS_x;
+        private System.Windows.Forms.CheckBox POSITIONS_readFromCursor;
+        private System.Windows.Forms.Panel POSITIONS_panel;
+        private System.Windows.Forms.RadioButton POSITIONS_queued;
+        private System.Windows.Forms.RadioButton POSITIONS_current;
+        private System.Windows.Forms.Label POSITIONS_title;
+        private System.Windows.Forms.Timer TIMER_currentPosition;
+        private System.Windows.Forms.ColumnHeader Index;
+        private System.Windows.Forms.Button btnClearListPositions;
     }
 }
 

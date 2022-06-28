@@ -44,17 +44,17 @@ namespace VirtualMouse.Utility
         public int  TYPE_value = 0;
         public bool TYPE_doubleclick = false;
 
-        /// <summary></summary>
-        public struct Item
-        {
-            /// <summary></summary>
-            public Point p;
-        }
+        // Single / Queued positions
+        public bool POSITIONS_isQueued = false;
 
-        /// <summary>Lista Info</summary>
-        public List<Item> PointsList = new List<Item>(new Item[] {
-        });
+        ///// <summary></summary>
+        //public struct Item
+        //{
+        //    /// <summary></summary>
+        //    public Point p;
+        //}
 
+        public List<Point> PointList = new List<Point>();
         #endregion
 
         #region --- Methods -------------------------------------------------------------------------------------------
