@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   id="svg4"
+   sodipodi:docname="VirtualMouse.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="17.3125"
+     inkscape:cx="7.5090253"
+     inkscape:cy="14.700361"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Mouse"
+     style="display:inline">
+    <path
+       d="M 11,1.07 C 7.05,1.56 4,4.92 4,9 h 7 m -7,6 a 8,8 0 0 0 8,8 8,8 0 0 0 8,-8 V 11 H 4 M 13,1.07 V 9 h 7 C 20,4.92 16.94,1.56 13,1.07 Z"
+       id="path2"
+       style="fill:#ffdd55;fill-opacity:1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Text"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;line-height:1.25;font-family:Broadway;-inkscape-font-specification:Broadway;fill:#000080;fill-opacity:1"
+       x="-7.1630821"
+       y="20.009325"
+       id="text1692"
+       transform="rotate(-37.796886)"><tspan
+         sodipodi:role="line"
+         id="tspan1690"
+         x="-7.1630821"
+         y="20.009325"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333px;font-family:'Berlin Sans FB Demi';-inkscape-font-specification:'Berlin Sans FB Demi, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000080;fill-opacity:1">Virtual</tspan></text>
+  </g>
+</svg>
