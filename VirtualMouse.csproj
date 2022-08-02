@@ -94,10 +94,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\outline_info_white_24dp.png" />
-    <None Include="Resources\outline_cancel_white_24dp.png" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="VirtualMouse.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

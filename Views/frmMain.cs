@@ -348,19 +348,23 @@ namespace VirtualMouse.Views
         // Click Interval
         private void CLICKINTERVAL_settime_hours_TextChanged(object sender, EventArgs e)
         {
-            _md.INTERVAL_hours = Convert.ToInt32(CLICKINTERVAL_settime_hours_value.Text);
+            if (CLICKINTERVAL_settime_hours_value.Text.Length > 0)
+                _md.INTERVAL_hours = Convert.ToInt32(CLICKINTERVAL_settime_hours_value.Text);
         }
         private void CLICKINTERVAL_settime_mins_TextChanged(object sender, EventArgs e)
         {
-            _md.INTERVAL_mins = Convert.ToInt32(CLICKINTERVAL_settime_mins_value.Text);
+            if (CLICKINTERVAL_settime_mins_value.Text.Length > 0)
+                _md.INTERVAL_mins = Convert.ToInt32(CLICKINTERVAL_settime_mins_value.Text);
         }
         private void CLICKINTERVAL_settime_secs_TextChanged(object sender, EventArgs e)
         {
-            _md.INTERVAL_secs = Convert.ToInt32(CLICKINTERVAL_settime_secs_value.Text);
+            if (CLICKINTERVAL_settime_secs_value.Text.Length > 0)
+                _md.INTERVAL_secs = Convert.ToInt32(CLICKINTERVAL_settime_secs_value.Text);
         }
         private void CLICKINTERVAL_settime_millis_TextChanged(object sender, EventArgs e)
         {
-            _md.INTERVAL_millis = Convert.ToInt32(CLICKINTERVAL_settime_millis_value.Text);
+            if (CLICKINTERVAL_settime_millis_value.Text.Length > 0)
+                _md.INTERVAL_millis = Convert.ToInt32(CLICKINTERVAL_settime_millis_value.Text);
         }
 
         // Click Options

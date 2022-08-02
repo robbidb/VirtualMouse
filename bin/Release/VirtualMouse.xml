@@ -4,10 +4,10 @@
   <INTERVAL_mins>0</INTERVAL_mins>
   <INTERVAL_secs>10</INTERVAL_secs>
   <INTERVAL_millis>0</INTERVAL_millis>
-  <INTERVAL_value>2000</INTERVAL_value>
+  <INTERVAL_value>10000</INTERVAL_value>
   <REPEAT_value>10</REPEAT_value>
-  <REPEAT_infinity>false</REPEAT_infinity>
-  <REPEAT_cnt>0</REPEAT_cnt>
+  <REPEAT_infinity>true</REPEAT_infinity>
+  <REPEAT_cnt>10</REPEAT_cnt>
   <TYPE_value>0</TYPE_value>
   <TYPE_doubleclick>false</TYPE_doubleclick>
   <POSITIONS_isQueued>false</POSITIONS_isQueued>
